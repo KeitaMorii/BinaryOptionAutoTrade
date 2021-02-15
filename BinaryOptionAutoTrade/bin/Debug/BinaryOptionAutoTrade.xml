@@ -1,0 +1,880 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BinaryOptionAutoTrade</name>
+    </assembly>
+    <members>
+        <member name="T:BinaryOptionAutoTrade.ChromeDriverEx">
+            <summary>
+            Chromeブラウザを拡張操作する
+            </summary>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.ChromeDriverEx.#ctor(System.String,OpenQA.Selenium.Chrome.ChromeOptions)">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.ChromeDriverEx.SwitchWindowLine">
+            <summary>
+            ライン画面に切り替える
+            </summary>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.ChromeDriverEx.SwitchWindowHighLow(System.String)">
+            <summary>
+            ハイロー画面に切り替える
+            </summary>
+            <param name="Handler">切り替えるハンドル</param>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.ChromeDriverEx.WaitCompleteDelay(System.Int32)">
+            <summary>
+            完全読み込み後、指定した時間待つ
+            </summary>
+            <param name="afterWaitMilliSeconds">ページが完全になった後に待つ時間(ミリ秒)</param>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.ChromeDriverEx.WaitComplete(System.Int32)">
+            <summary>
+            ページが完全になるまで待つ
+            指定なし10分
+            </summary>
+            <param name="waitMilliSeconds">待つ最大ミリ秒数</param>
+            <returns>True:OK False:指定秒数までに待てなかった Exception:想定外の例外</returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.ChromeDriverEx.IsFindElementById(System.String)">
+            <summary>
+            対象のIDがあるか調査する ID
+            </summary>
+            <param name="id">調査対象 ID 名</param>
+            <returns>True 見つかった / False 見つからなかった</returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.ChromeDriverEx.IsFindElementBy(OpenQA.Selenium.By)">
+            <summary>
+            対象の要素があるか調査する BY
+            </summary>
+            <param name="by">調査対象 Byオブジェクト</param>
+            <returns>True 見つかった / False 見つからなかった</returns>
+        </member>
+        <member name="T:BinaryOptionAutoTrade.CommonControl">
+            <summary>
+            条件に縛られない共通処理
+            </summary>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.CommonControl.ClickAction">
+            <summary>
+            クリックアクションを起こす
+            </summary>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.CommonControl.SleepWait(System.Int32)">
+            <summary>
+            待機する
+            </summary>
+            <param name="millisecondsTo">待機するミリ秒</param>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.CommonControl.DebugPrint(System.String[])">
+            <summary>
+            デバッグ用
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.CommonControl.DebugPrint(System.Exception,System.String[])">
+            <summary>
+            デバッグ用
+            </summary>
+            <param name="e">例外</param>
+            <param name="args">追記用メッセージ</param>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.CommonControl.ConvBoResult(System.String)">
+            <summary>
+            結果用の型（クラス）に変換する
+            </summary>
+            <param name="boResultMsg"></param>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.CommonControl.PostBoResult(BinaryOptionAutoTrade.BoHistroyContainer)">
+            <summary>
+            取引履歴をスプレッドシートへ送信する
+            </summary>
+            <param name="bhc">送信するメッセージコンテナ 1つ</param>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.CommonControl.OutPutTextBoResult(BinaryOptionAutoTrade.BoHistroyContainer)">
+            <summary>
+            取引履歴をテキストにストックする
+            </summary>
+            <param name="bhc">記録するBOコンテナ</param>
+            <returns> True 成功 / False 失敗 </returns>
+        </member>
+        <member name="T:BinaryOptionAutoTrade.CommonDriverControl">
+            <summary>
+            ドライバ用操作
+            継承外の操作をする時ようの処理を書く
+            </summary>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.CommonDriverControl.CreateNewChromeDriver">
+            <summary>
+            ドライバを作成する
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.CommonDriverControl.OpenNewWindowTab(BinaryOptionAutoTrade.ChromeDriverEx,System.String)">
+            <summary>
+            新しいタブで対象のURLを開く
+            </summary>
+            <param name="chrome"></param>
+            <param name="argURL"></param>
+            <returns>新しく開いたURLのハンドル</returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.CommonDriverControl.GetSafeWebElementByXPath(BinaryOptionAutoTrade.ChromeDriverEx,System.String)">
+            <summary>
+            【XPATH版】
+            対象の要素が取得できる状態になってから
+            安全に取得する
+            </summary>
+            <param name="chrome">ドライバ</param>
+            <param name="xPath">XPATH</param>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.CommonDriverControl.GetSafeWebElementById(BinaryOptionAutoTrade.ChromeDriverEx,System.String)">
+            <summary>
+            【ID版】
+            対象の要素が取得できる状態になってから
+            安全に取得する
+            </summary>
+            <param name="chrome">ドライバ</param>
+            <param name="elementId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.CommonDriverControl.WaitElementArrivalById(BinaryOptionAutoTrade.ChromeDriverEx,System.String)">
+            <summary>
+            ターゲット要素が出現するまで待機する
+            </summary>
+            <param name="chrome">対象ドライバ</param>
+            <param name="elementId">対象要素</param>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.CommonDriverControl.WaitElementArrivalByXPath(BinaryOptionAutoTrade.ChromeDriverEx,System.String)">
+            <summary>
+            ターゲット要素が出現するまで待機する
+            XPath
+            </summary>
+            <param name="chrome">対象ドライバ</param>
+            <param name="XPath">対象要素</param>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.CommonDriverControl.WaitElementArrivalBy(BinaryOptionAutoTrade.ChromeDriverEx,OpenQA.Selenium.By)">
+            <summary>
+            対象のエレメントが現れるまで待つ
+            </summary>
+            <param name="chrome">ドライバ</param>
+            <param name="by">対象</param>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.CommonDriverControl.selectAllTextBox(BinaryOptionAutoTrade.ChromeDriverEx,System.String)">
+            <summary>
+            対象のID要素のテキストボックスを全選択状態にする
+            </summary>
+            <param name="chrome">ドライバ</param>
+            <param name="argId">要素ID</param>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.CommonDriverControl.ScrollTargetElementView(OpenQA.Selenium.IWebElement)">
+            <summary>
+            対象の要素が見える位置にまでスクロールを行う
+            </summary>
+            <param name="element">表示させたい要素(エレメント)</param>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.URL_LINE_Index">
+            <summary>LINE(拡張機能)実行URL</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.PATH_Base_Project">
+            <summary>slnのフォルダ場所</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.PATH_BO_HISTORY_TEXT">
+            <summary>BinaryOption履歴のテキストファイル場所</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.URL_HIGH_LOW_DEMO">
+            <summary>デモトレードURL</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.URL_HIGH_LOW">
+            <summary>本番 ハイロー URL</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.URL_GAS_POST_COMMON">
+            <summary> Googleスプレッドシートに送る用URL MEMO:末尾の？つけるのを忘れない</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.URL_INVESTING">
+            <summary> 経済指標URL </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.LINE_CRLF">
+            <summary> LINE プログラム内部専用改行マーク </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.PATH_ChromeDriver">
+            <summary>ChromeDriverパス</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.PATH_CRX_LINE">
+            <summary>Line拡張機能パス</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.PATH_ProfileDir">
+            <summary>Profileディレクトリパス</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.UsingProfileName">
+            <summary>使用するProfile名</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.Login_Line_First">
+            <summary>ラインにログインする一番最初かどうか</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.Login_Line_Address">
+            <summary>ログインに使用するアドレス</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.Login_Line_PassWord">
+            <summary>ログインに使用するパスワード</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.Login_HL_ID">
+            <summary>ハイロー　ログインに使用するID</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.Login_HL_PassWord">
+            <summary>ハイロー　ログインに使用するパスワード</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.LINE_RECEIVER_SIDE">
+            <summary>親機からラインによる受信を受ける側かどうか？（子機か？）
+            TRUE 子機 ／ FALSE 親機
+            </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.XPATH_LINE_ROOM">
+            <summary>LINE 左側にある　部屋名の要素</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.XPATH_LINE_NewArrivals">
+            <summary>LINE 新着数を表示する要素</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.XPATH_LINE_ChatRoomMsgsOther">
+            <summary>LINE チャット メッセージ要素 を取得する(他人のメッセージのみ)</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.XPATH_LINE_ChatRoomMsgsOtherLatest">
+            <summary>LINE チャット 最新の メッセージ要素 を取得する(他人のメッセージのみ)</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.XPATH_LINE_ChatRoomMsgsOwn">
+            <summary>LINE チャット 一覧取得用 メッセージ要素を取得する(自分のメッセージ)</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.XPATH_LINE_ChatRoomMsgsOwnLatest">
+            <summary>LINE チャット 最新の メッセージ要素を取得する(自分のメッセージ)</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.XPATH_HL_Welcome_Button">
+            <summary>HighLowのデモ時に最初に現れるようこそボタン</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.XPATH_HL_BrandSelect">
+            <summary>HighLow ブランドを選択する</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.XPATH_HL_High_Button">
+            <summary>HighLow Highボタン</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.XPATH_HL_Low_Button">
+            <summary>HighLow Highボタン</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.XPATH_HL_Remaining_Time">
+            <summary>HighLow 残り時刻の表示領域</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.HTML_ID_LINE_ChatRoomDivId">
+            <summary>LINE チャット のリストDIV要素ID</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.HTML_ID_HL_Balance">
+            <summary>HighLow 残高のID</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.HTML_ID_HL_Amount">
+            <summary>HighLow 投資額　入力テキストボックス</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.HTML_ID_HL_NoticeMsg">
+            <summary>HighLow 注意メッセージ</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.ROOM_NAME_RISE">
+            <summary>[LINE部屋名] RISE BOトレードグループ極</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.ROOM_NAME_AUXESIS">
+            <summary>[LINE部屋名] AUXESIS</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.ROOM_NAME_CmdLine">
+            <summary>[LINE部屋名] CmdLine</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.ROOM_NAME_SignalMeijin">
+            <summary>[LINE部屋名] </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.ROOM_NAME_DebugRoomName">
+            <summary>[LINE部屋名] デバッグ用部屋名</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.ROOM_NAME_MIYU">
+            <summary>[LINE部屋名] MIYU 用部屋名</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.ROOM_NAME_BoSignal">
+            <summary>[LINE部屋名] 親機が配信する先のグループ
+            子機が受けるグループ
+            </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.CHROME_HANDLE_LINE">
+            <summary>[ハンドル] ライン</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.CHROME_HANDLE_HIGH_LOW_PRDCT">
+            <summary>[ハンドル] ハイロー 本番環境 Production</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.CHROME_HANDLE_HIGH_LOW_DEMO">
+            <summary>[ハンドル] ハイロー デモ環境 DEMO </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Constants.rdDic">
+            <summary>本番／デモを切り替える判断をする情報を持つ辞書　シグナル名＠時間(HH)</summary>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.Constants.Initialize">
+            <summary>
+            初期化
+            テキストファイルから設定を読み込む
+            </summary>
+        </member>
+        <member name="T:BinaryOptionAutoTrade.SignalState">
+            <summary>
+            シグナルのステータス状態を表す
+            </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalState.soInitilized">
+            <summary>オーダー：初期値</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalState.soEntry">
+            <summary>オーダー：エントリー</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalState.soStandBy">
+            <summary>オーダー：待機</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalState.soMartin">
+            <summary>オーダー：マーチン</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalState.soCancel">
+            <summary>オーダー：キャンセル</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalState.soResult">
+            <summary>オーダー：結果</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalState.soPtn20">
+            <summary>オーダー：sub ptn20</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalState.soWin">
+            <summary>オーダー：sub WIN</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalState.soLose">
+            <summary>オーダー：sub LOSE</summary>
+        </member>
+        <member name="T:BinaryOptionAutoTrade.arrowState">
+            <summary>
+            High か Low を示す
+            </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.arrowState.asUnkown">
+            <summary> ハイロー初期値 </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.arrowState.asHigh">
+            <summary> ハイロー ハイ High</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.arrowState.asLow">
+            <summary> ハイロー ロー Low</summary>
+        </member>
+        <member name="T:BinaryOptionAutoTrade.EnvState">
+            <summary>
+            シグナルの環境を表す
+            </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.EnvState.esUnkown">
+            <summary> 初期値 </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.EnvState.esReal">
+            <summary> 本番環境 </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.EnvState.esTest">
+            <summary> テスト環境 </summary>
+        </member>
+        <member name="T:BinaryOptionAutoTrade.HistoryState">
+            <summary>
+            履歴シグナルコンテナの状態を示す
+            BoHistroyContainer用
+            0 → 1 → 2 → 3と遷移するのが正常動作
+            </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.HistoryState.hsUnkownError">
+            <summary> 何らかの予期しないエラーが起きた </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.HistoryState.hsWaitResult">
+            <summary> シグナル結果待ち </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.HistoryState.hsWaitPost">
+            <summary> Googleへの送信待ち </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.HistoryState.hsPostDataComplete">
+            <summary> Googleへ結果送信完了 </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.HistoryState.hsDone">
+            <summary> 全ての処理完了 </summary>
+        </member>
+        <member name="T:BinaryOptionAutoTrade.SignalOrder">
+            <summary>
+            HighLow取引１オーダー分のクラス
+            </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalOrder.Environment">
+            <summary>環境ステータス 本番 Or テスト </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalOrder.signalCompleteFlag">
+            <summary>受け取ったシグナルが終わったらTRUE</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalOrder.signalRoomName">
+            <summary>受け取ったシグナルの部屋名</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalOrder.msgType">
+            <summary>メッセージがバイナリー配信か、命令コマンドかを判断する</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalOrder.mainState">
+            <summary>メインシグナルステータス </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalOrder.subState">
+            <summary>サブ　シグナルステータス</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalOrder.tradeBrand">
+            <summary>取引する銘柄</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalOrder.tradeTimeSpan">
+            <summary>【未使用】取引する　時間単位</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalOrder.arrow">
+            <summary>High又はLow</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalOrder.bidPrice">
+            <summary>入札予定価格</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalOrder.bidPriceRawMessage">
+            <summary>入札予定価格 取得元メッセージ</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalOrder.signalMsgTimeRceived">
+            <summary>シグナルが配信を決めたメッセージの時刻</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalOrder.lineSignalTimeRceived">
+            <summary>シグナルをLineで受け取った時刻</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalOrder.tradeEntryTime">
+            <summary>エントリーする時刻</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalOrder.tradeTimeFrame">
+            <summary>
+            エントリー判定時刻　タイムフレーム（この時間が判定時間の枠でエントリーする）
+            時刻形式 HH:MM (00:00)
+            </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalOrder.rawOriginalMessage">
+            <summary>配信された生メッセージを保存</summary>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.SignalOrder.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.SignalOrder.getEnviromentNames">
+            <summary>
+            環境の文字列を返す
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.SignalOrder.getEntryNoticeMsg">
+            <summary>
+            エントリーした事を知らせるメッセージを返す
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:BinaryOptionAutoTrade.SignalResult">
+            <summary>
+            判定結果を格納するクラス
+            </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalResult.R_TradeBrand">
+            <summary>取引した銘柄</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalResult.R_Arrow">
+            <summary>入札したHigh又はLow </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalResult.R_Result">
+            <summary> 判定結果 [WIN] Or [LOSE]</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalResult.R_BidPrice">
+            <summary>入札した価格 </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalResult.R_BidTime">
+            <summary>入札した時間 </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalResult.R_BidRate">
+            <summary>入札レート</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalResult.R_JudgeTime">
+            <summary> 判定時刻 </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalResult.R_JudgeRate">
+            <summary> 判定レート </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalResult.R_PayOut">
+            <summary> 判定時ペイアウト </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalResult.R_State">
+            <summary> シグナルステータス </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.SignalResult.R_RawString">
+            <summary> 生データ文字列 </summary>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.SignalResult.#ctor">
+            <summary> コンストラクタ </summary>
+        </member>
+        <member name="T:BinaryOptionAutoTrade.BoHistroyContainer">
+            <summary>
+            シグナル情報の履歴を管理するクラス
+            </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.BoHistroyContainer.State">
+            <summary> コンテナのステータス </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.BoHistroyContainer.Sig">
+            <summary>入力したシグナル情報</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.BoHistroyContainer.ResultSig">
+            <summary>結果情報</summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.BoHistroyContainer.PostResultData">
+            <summary> 送信データ文字列 </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.BoHistroyContainer.PostURL_SpredSheet">
+            <summary> 送信先URL Google スプレッドシート</summary>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.BoHistroyContainer.#ctor">
+            <summary>コンストラクタ</summary>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.BoHistroyContainer.#ctor(BinaryOptionAutoTrade.HistoryState,BinaryOptionAutoTrade.SignalOrder)">
+            <summary>コンストラクタ Sig付き</summary>
+        </member>
+        <member name="T:BinaryOptionAutoTrade.HighLowControl">
+            <summary>
+            ハイローオーストラリアの操作を行うクラス
+            </summary>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.HighLowControl.#ctor(BinaryOptionAutoTrade.ChromeDriverEx@)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="chrome"></param>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.HighLowControl.IsActivate">
+            <summary>
+            ハイロー画面に切り替える
+            </summary>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.HighLowControl.Open(System.Boolean)">
+            <summary>
+            ハイロー画面を開く
+            </summary>
+            <param name="demoFlag">Trueデモ ／ False本トレ</param>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.HighLowControl.Login">
+            <summary>
+            【正規版】本番にログインを行う
+            </summary>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.HighLowControl.demoLogin">
+            <summary>
+            【デモ版】ハイローにログインする
+            </summary>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.HighLowControl.RetryLogin">
+            <summary>
+            もし404エラー（接続切れ）になっていたらログインを再度行う
+            </summary>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.HighLowControl.Logout">
+            <summary>
+            ハイローからログアウトする
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.HighLowControl.EntryHighLow(BinaryOptionAutoTrade.SignalOrder@)">
+            <summary>
+            ハイローにエントリーする
+            </summary>
+            <param name="sig">シグナル情報　コンテナ</param>
+            <returns>True エントリー成功 / False エントリー失敗</returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.HighLowControl.getSignalResult(System.Collections.Generic.List{BinaryOptionAutoTrade.BoHistroyContainer}@)">
+            <summary>
+            入札結果を取得し、終了のものが有れば、
+            エントリーしたシグナル情報と照らし合わせて
+            どのシグナルでエントリーしたものかをチェックして
+            格納する
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.HighLowControl.AnalysisReceiverSide(System.String@)">
+            <summary>
+            受け手側(子機)専用の解析とパラメータ設定
+            </summary>
+            <param name="argSignalFlatWord">解析するシグナル文章</param>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.HighLowControl.SelectSignalMsg(System.String,System.Collections.ArrayList)">
+            <summary>
+            受信したメッセージの中からエントリー情報だけ抽出する
+            </summary>
+            <param name="roomName">受信したルーム名</param>
+            <param name="ary">メッセージ群</param>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.HighLowControl.JudgeRealDemo(BinaryOptionAutoTrade.SignalOrder@)">
+            <summary>
+            デモかリアルかを判断する
+            </summary>
+            <param name="sio">判断するシグナル</param>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.HighLowControl.AnalysisWord(System.String,System.String)">
+            <summary>
+            平文のシグナル文章を各パラメータに解析する
+            </summary>
+            <param name="roomName">受けた部屋名</param>
+            <param name="argSignalFlatWord">何れかのシグナル文章</param>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.HighLowControl.AnalysisBySignalMeijin(System.String)">
+            <summary>
+            シグナル名人のシグナルを解析する
+            </summary>
+            <param name="argSignalWord"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.HighLowControl.AnalysisByMiyuMsg(System.String)">
+            <summary>
+            MIYU 部屋用
+            
+            メッセージ例：[IFTTT] EURUSD Low Chance ・・・
+            </summary>
+            <param name="argSignalWord">解析する文章</param>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.HighLowControl.AnalysisByAuxesisMsg(System.String)">
+            <summary>
+            アクシス部屋の文章を解析する
+            以下は１マーチンメッセージ例 上から下へ受信する
+            [バイナリー配信] Mon Jan 07 2019 16:59:00 待機,,EURUSD,5分,ロー,数値:1.144
+            [バイナリー配信] Mon Jan 07 2019 16:59:53 エントリー,ptn20,EURUSD,5分,ロー,数値:1.144
+            [バイナリー配信] Mon Jan 07 2019 17:04:36 待機,マーチン,EURUSD,5分,ロー,数値:1.144
+            [バイナリー配信] Mon Jan 07 2019 17:04:59 エントリー,マーチン,EURUSD,5分,ロー,数値:1.144
+            [バイナリー配信] Mon Jan 07 2019 17:10:00 ProPirot_WIN,EURUSD,5分,ロー,マーチン,CloseValue[1]:1.1435700
+            </summary>
+            <param name="argWord">メッセージ平文</param>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.HighLowControl.getNextEntryTime(BinaryOptionAutoTrade.SignalOrder)">
+            <summary>
+            次にエントリーする時間を求める
+            </summary>
+            <param name="argSio">シグナル情報</param>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.HighLowControl.PrepareResultMessage(System.String)">
+            <summary>
+            入札結果をライン用に整える
+            </summary>
+            <param name="msg">結果メッセージ</param>
+            <returns></returns>
+        </member>
+        <member name="T:BinaryOptionAutoTrade.invCalender">
+            <summary>
+            経済指標の情報をもつクラス
+            </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.invCalender.evTime">
+            <summary>
+            イベント時間
+            </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.invCalender.brand">
+            <summary>
+            銘柄
+            </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.invCalender.importance">
+            <summary>
+            重要度
+            </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.invCalender.detail">
+            <summary>
+            指標内容
+            </summary>
+        </member>
+        <member name="T:BinaryOptionAutoTrade.InvestingCalender">
+            <summary>
+            経済指標についての処理を行うクラス
+            </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.InvestingCalender.EconomicList">
+            <summary>経済指標の重要度の回避リスト</summary>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.InvestingCalender.GetInvestingCalender">
+            <summary>
+            経済指標のイベントを取得する
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.InvestingCalender.JudgeEnvironmentSignalZone(BinaryOptionAutoTrade.SignalOrder@,BinaryOptionAutoTrade.LINEControl@)">
+            <summary>
+            エントリーする時間が高い重要度の時間帯でないかどうかチェックする
+            重要度前後30分以内であればスルーする
+            </summary>
+            <returns>True 高い重要度 / False それ以外の重要度または重要でない</returns>
+        </member>
+        <member name="T:BinaryOptionAutoTrade.LINEControl">
+            <summary>
+            LINEブラウザ操作用クラス
+            </summary>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.LINEControl.chrome">
+            <summary>操作対象ドライバ</summary>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.LINEControl.#ctor(BinaryOptionAutoTrade.ChromeDriverEx@)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="chromeDriver"></param>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.LINEControl.IsActivate">
+            <summary>
+            Lineのウインドウに切り替える
+            </summary>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.LINEControl.LoginLINE">
+            <summary>
+            defaultのラインログイン
+            </summary>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.LINEControl.LoginLINE(System.String,System.String)">
+            <summary>
+            ラインにログインする
+            </summary>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.LINEControl.ConfirmIsRoomsNewArrivals(System.String)">
+            <summary>
+            対象の部屋名に新着が本当に来ているか確認する
+            </summary>
+            <param name="roomName"></param>
+            <returns>True 来てる / False 来てない</returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.LINEControl.getRoomNewArrivalsMsgNumber(System.String)">
+            <summary>
+            新着メッセージの数を取得する
+            </summary>
+            <param name="roomName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.LINEControl.IsRoomsNewArrivals(System.String)">
+            <summary>
+            対象のルームの新着が来るのを待つ<br></br>
+            新着が来たらその部屋名を取得
+            </summary>
+            <param name="roomName">部屋名</param>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.LINEControl.WaitRoomNewArrivals(System.String)">
+            <summary>
+            対象のルームの新着が来るのを待つ
+            新着が来たらその部屋名を返す
+            </summary>
+            <param name="roomName">部屋名</param>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.LINEControl.FindElementRoomTitleLiByXPath(System.String)">
+            <summary>
+            対象の部屋名の要素取得
+            </summary>
+            <param name="roomName">部屋名</param>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.LINEControl.RoomAvtive(System.String)">
+            <summary>
+            対象のルームをアクティブにする
+            </summary>
+            <param name="roomName">部屋名</param>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.LINEControl.ChatRoomListScrollTop">
+            <summary>
+            部屋リストをトップにスクロールする
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.LINEControl.ChatRoomListScrollEnd">
+            <summary>
+            部屋リストを最後までスクロールする
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.LINEControl.getNewMsgText(System.String)">
+            <summary>
+            対象の部屋のメッセージの最新テキストを取得
+            </summary>
+            <param name="roomName">部屋名</param>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.LINEControl.putSignalMsgToRoom(System.String,System.String,System.String)">
+            <summary>
+            【シグナルメッセージ専用】
+            対象の部屋にメッセージを書き込む
+            </summary>
+            <param name="toWriteRoomName">書き込む対象の部屋名</param>
+            <param name="signalRoomName">実際に来たシグナルの部屋</param>
+            <param name="argMsg">メッセージ</param>
+        </member>
+        <member name="F:BinaryOptionAutoTrade.Program.ClickActionTrigger">
+            <summary>
+            クリックアクショントリガ
+            </summary>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.Program.CommandProc(System.String,System.String,System.String@)">
+            <summary>
+            コマンド命令専用メソッド
+            ユーザからの送信メッセージを受けとりそれに合わせた命令をこなす
+            コマンド以外から始まるものはそのまま入れる
+            </summary>
+            <param name="msg">ユーザコマンド</param>
+            <param name="beforeStatus">変更前ユーザステータス</param>
+            <param name="argUserCommandStatus"></param>
+            <returns>エラーメッセージ(あれば)</returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.Program.IsSignalMsg(System.String,System.String)">
+            <summary>
+            対象のメッセージがシグナルか命令かを判断する
+            </summary>
+            <param name="roomName">部屋名</param>
+            <param name="msg">メッセージ</param>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.Program.WaitLineGroupsNewArraival(BinaryOptionAutoTrade.LINEControl)">
+            <summary>
+            ラインの部屋で
+            シグナルを受け取る部屋に新着があるか、
+            又はコマンド部屋での新しい入力を受け付けるまで待つ
+            </summary>
+            <param name="Line">ラインオブジェクト</param>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.Program.WaitLineGroupsByParent(BinaryOptionAutoTrade.LINEControl)">
+            <summary>
+            親機用ライングループ　待機処理
+            </summary>
+            <param name="Line">ラインオブジェクト</param>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.Program.WaitLineGroupsByReciever(BinaryOptionAutoTrade.LINEControl)">
+            <summary>
+            子機用ライングループ　待機処理
+            </summary>
+            <param name="Line"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BinaryOptionAutoTrade.Program.ForDebugOnly">
+            <summary>
+            メッセージ
+            デバッグ用
+            </summary>
+        </member>
+        <member name="T:BinaryOptionAutoTrade.TextControl">
+            <summary>
+            テキスト操作専用クラス
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,15 @@
+C:\Users\KeitaMorii\source\boat\BinaryOptionAutoTrade\BinaryOptionAutoTrade\bin\Release\chromedriver.exe
+C:\Users\KeitaMorii\source\boat\BinaryOptionAutoTrade\BinaryOptionAutoTrade\bin\Release\BinaryOptionAutoTrade.exe.config
+C:\Users\KeitaMorii\source\boat\BinaryOptionAutoTrade\BinaryOptionAutoTrade\bin\Release\BinaryOptionAutoTrade.exe
+C:\Users\KeitaMorii\source\boat\BinaryOptionAutoTrade\BinaryOptionAutoTrade\bin\Release\BinaryOptionAutoTrade.pdb
+C:\Users\KeitaMorii\source\boat\BinaryOptionAutoTrade\BinaryOptionAutoTrade\bin\Release\Selenium.WebDriverBackedSelenium.dll
+C:\Users\KeitaMorii\source\boat\BinaryOptionAutoTrade\BinaryOptionAutoTrade\bin\Release\WebDriver.dll
+C:\Users\KeitaMorii\source\boat\BinaryOptionAutoTrade\BinaryOptionAutoTrade\bin\Release\WebDriver.Support.dll
+C:\Users\KeitaMorii\source\boat\BinaryOptionAutoTrade\BinaryOptionAutoTrade\bin\Release\Selenium.WebDriverBackedSelenium.xml
+C:\Users\KeitaMorii\source\boat\BinaryOptionAutoTrade\BinaryOptionAutoTrade\bin\Release\WebDriver.xml
+C:\Users\KeitaMorii\source\boat\BinaryOptionAutoTrade\BinaryOptionAutoTrade\bin\Release\WebDriver.Support.xml
+C:\Users\KeitaMorii\source\boat\BinaryOptionAutoTrade\BinaryOptionAutoTrade\obj\Release\BinaryOptionAutoTrade.csproj.CoreCompileInputs.cache
+C:\Users\KeitaMorii\source\boat\BinaryOptionAutoTrade\BinaryOptionAutoTrade\obj\Release\BinaryOptionAutoTrade.csproj.CopyComplete
+C:\Users\KeitaMorii\source\boat\BinaryOptionAutoTrade\BinaryOptionAutoTrade\obj\Release\BinaryOptionAutoTrade.exe
+C:\Users\KeitaMorii\source\boat\BinaryOptionAutoTrade\BinaryOptionAutoTrade\obj\Release\BinaryOptionAutoTrade.pdb
+C:\Users\KeitaMorii\source\boat\BinaryOptionAutoTrade\BinaryOptionAutoTrade\obj\Release\BinaryOptionAutoTrade.csprojAssemblyReference.cache
